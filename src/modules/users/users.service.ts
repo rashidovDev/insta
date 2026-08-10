@@ -5,14 +5,14 @@ const users = [
       { id: 2, name: 'Vali' },
     ]
 
-@Injectable()
+// @Injectable()
 export class UsersService {
     
     findAll() {
        return users
     }
 
-    findOne(id : number){
+    findOne(id){
         return users.find(user => user.id == id)
     }
 }

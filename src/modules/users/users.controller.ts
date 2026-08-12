@@ -1,5 +1,6 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { UsersService } from './users.service';
+import { number } from 'joi';
 
 @Controller('users')
 export class UsersController {
@@ -10,8 +11,11 @@ export class UsersController {
         return this.usersService.findAll();
     }
 
-     @Get(':id')
-     findOne(@Param('id') id: string) {
-     return this.usersService.findOne(id);
-}
+    @Get(':id')
+  findOne(
+    @Param('id', ParseIntPipe) id: number,
+  ) {
+    return this.usersService.findOne(id);
+  }
+
 }

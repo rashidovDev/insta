@@ -10,14 +10,13 @@ export class UsersService {
     private readonly usersRepository : Repository<User>,
 ){}
 
-async create(name: string, email: string) {
+async create(name : string, email : string) {
   const user = this.usersRepository.create({
-    name,
-    email,
-  });
-
-  return this.usersRepository.save(user);
-}
+  name,
+  email
+});
+  return await this.usersRepository.save(user);
+} 
 
 async findAll() {
   return this.usersRepository.find();
@@ -26,6 +25,9 @@ async findAll() {
  async findOne(id: number) {
   return this.usersRepository.findOne({
     where: { id },
+    relations: {
+      posts : true
+    }
   });
 }
 }

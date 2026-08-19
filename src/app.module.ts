@@ -21,6 +21,6 @@ import { PostsModule } from './modules/posts/posts.module';
 
     UsersModule,
     PostsModule,
-  ],
+  ], 
 })
 export class AppModule {}

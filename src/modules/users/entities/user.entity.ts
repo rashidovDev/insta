@@ -6,6 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Post } from '../../posts/entities/post.entity';
+import { RefreshSession } from '../../auth/entities/refresh-session.entity';
 
 @Entity('users')
 export class User {
@@ -19,5 +20,11 @@ export class User {
   email!: string;
 
   @OneToMany(() => Post, (post) => post.user)
-  posts! : Post[]
+  posts! : Post[];
+
+  @OneToMany(
+  () => RefreshSession,
+  (refreshSession) => refreshSession.user,
+)
+refreshSessions!: RefreshSession[];
 }

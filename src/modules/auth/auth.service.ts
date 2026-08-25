@@ -15,6 +15,10 @@ export class AuthService {
     private readonly configService : ConfigService
   ) {}
 
+  async register(user : User){
+    
+  }
+
   async login(user: User) {
   const payload = {
     sub: user.id,

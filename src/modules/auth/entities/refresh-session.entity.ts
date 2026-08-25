@@ -14,7 +14,7 @@ export class RefreshSession {
 
   @Column()
   tokenHash!: string;
-
+  
   @Column()
   expiresAt!: Date;
 

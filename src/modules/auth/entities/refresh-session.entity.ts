@@ -18,6 +18,10 @@ export class RefreshSession {
   @Column()
   expiresAt!: Date;
 
+  @Column()
+  familyId!: string;
+
+
   @Column({ type: 'timestamp', nullable: true })
   revokedAt!: Date | null;
 

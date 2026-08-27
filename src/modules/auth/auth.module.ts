@@ -5,13 +5,17 @@ import { JwtModule } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RefreshSession } from './entities/refresh-session.entity';
 import { User } from '../users/entities/user.entity';
+import { JwtStrategy } from './strategies/jwt.strategy';
+import { PassportModule } from '@nestjs/passport';
 
 @Module({
   imports: [
     JwtModule.register({}),
+    PassportModule,
     TypeOrmModule.forFeature([RefreshSession, User])
   ],
   controllers: [AuthController],
-  providers: [AuthService]
+  providers: [AuthService, JwtStrategy],
+  exports: [JwtStrategy]
 })
 export class AuthModule {}
